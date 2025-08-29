@@ -14,7 +14,7 @@ int main(int argc, const char* argv[])
 
    for (int j = 0; j <= 0; ++j)
     {
-        const char* image_path = "D:/GitHub/Mini-VM/tests/2048.obj";      // also valid on Windows
+        const char* image_path = "tests/2048.obj";      // also valid on Windows
         if (!read_image(image_path))
         {
             printf("failed to load image: %s\n", argv[j]);
