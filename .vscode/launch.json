@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug C++ with MSVC",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/lc3vm.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "symbolSearchPath": "${workspaceFolder}"
+    }
+  ]
+}

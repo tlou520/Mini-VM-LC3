@@ -1,0 +1,1 @@
+"D:\Installed\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64 & cd /d "D:\GitHub\Mini-VM"
