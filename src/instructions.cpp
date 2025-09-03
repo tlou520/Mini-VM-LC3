@@ -30,7 +30,7 @@ void instr_br(CPU& reg, Memory& memory, uint16_t instr)
     // Check if the condition is met
     if (reg.check_condition(cond)) {
         // Get the offset and update the PC
-        int16_t offset = static_cast<int16_t>(((instr & 0x1FF) << 7) >> 7);
+        int16_t offset = static_cast<int16_t>((instr & 0x1FF) << 7) >> 7;
         reg[R_PC] += offset;
     }
 }
@@ -93,7 +93,7 @@ void instr_jsr(CPU& reg, Memory& memory, uint16_t instr)
     // Check addressing mode: bit[11] = 1 → JSR (PC-relative), 0 → JSRR (BaseR)
     if ((instr >> 11) & 1) {
         // JSR: sign-extend 11-bit offset
-        int16_t offset = static_cast<int16_t>(((instr & 0x7FF) << 5) >> 5);
+        int16_t offset = static_cast<int16_t>((instr & 0x7FF) << 5) >> 5;
         reg[R_PC] += offset;
     } else {
         // JSRR: bits[8:6] select Base Register
@@ -182,7 +182,8 @@ void instr_not(CPU& reg, Memory& memory, uint16_t instr)
 void instr_ldi(CPU& reg, Memory& memory, uint16_t instr)
 {
     Register DEST = static_cast<Register>((instr >> 9) & 0x7);
-    uint16_t addr = reg[R_PC] + static_cast<int16_t>(((instr & 0x1FF) << 7) >> 7);
+    int16_t SIGN_EXT = static_cast<int16_t>((static_cast<int16_t>(instr << 7)) >> 7);
+    uint16_t addr = reg[R_PC] + SIGN_EXT;
 
     uint16_t final_addr = memory.mem_read(addr);
     reg[DEST] = memory.mem_read(final_addr);
