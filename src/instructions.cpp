@@ -182,7 +182,7 @@ void instr_not(CPU& reg, Memory& memory, uint16_t instr)
 void instr_ldi(CPU& reg, Memory& memory, uint16_t instr)
 {
     Register DEST = static_cast<Register>((instr >> 9) & 0x7);
-    uint16_t addr = reg[R_PC] + static_cast<int16_t>((instr & 0x1FF) << 7) >> 7;
+    uint16_t addr = reg[R_PC] + static_cast<int16_t>(((instr & 0x1FF) << 7) >> 7);
 
     uint16_t final_addr = memory.mem_read(addr);
     reg[DEST] = memory.mem_read(final_addr);
@@ -303,7 +303,7 @@ void instr_trap(CPU& reg, Memory& memory, uint16_t instr)
         case TRAP_HALT:
         {
             std::cout << "HALT\n";
-            exit(0);
+            abort();
             break;
         }
     }
