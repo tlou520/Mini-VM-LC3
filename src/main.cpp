@@ -12,16 +12,15 @@ int main(int argc, const char* argv[])
     // Initialize memory and CPU
     CPU cpu;
 
-   for (int j = 0; j <= 0; ++j)
+    for (int j = 1; j < argc; ++j)  // start at 1, because argv[0] is program name
     {
-        const char* image_path = "tests/2048.obj";      // also valid on Windows
+        const char* image_path = argv[j];
         if (!read_image(image_path))
         {
             printf("failed to load image: %s\n", argv[j]);
             exit(1);
         }
     }
-
     signal(SIGINT, handle_interrupt);
     disable_input_buffering();
 
