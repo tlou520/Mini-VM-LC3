@@ -6,7 +6,7 @@
       "type": "cppvsdbg",
       "request": "launch",
       "program": "${workspaceFolder}/lc3vm.exe",
-      "args": ["tests/2048.obj"],
+      "args": ["tests/rogue.obj"],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
